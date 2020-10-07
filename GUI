@@ -1,0 +1,30 @@
+import sys 
+from PyQt5.QtWidgets import QApplication,QWidget,QLabel,QPushButton
+
+#membuat fungsi untuk menentukan layout window
+def window_go():
+    #inisialisai pyqt
+    app = QApplication(sys.argv)
+    window = QWidget()
+    
+    #menyiapkan label, menempelkan label ke window
+    #settext dan posisi
+    textLabeljudul = QLabel(window)
+    textLabeljudul.setText("Kotak Angka")
+    textLabeljudul.move(10,5)
+    for i in range(5):
+        b = QPushButton(window)
+        b.resize(30,30)
+        b.setStyleSheet("background-color : #ADD8E6; color : red; font-size: 30px; font: bold")
+        b.setText(str(i+1))
+        b.move(10,20)
+        b.move(60*(i),20)
+        
+    #menentukan ukuran window, title, dan menampilan window
+    window.setGeometry(50,50,400,300)
+    window.setWindowTitle("PyQt5 Example")
+    window.show()
+    sys.exit(app.exec_())
+    
+if __name__ == '__main__':
+    window_go()

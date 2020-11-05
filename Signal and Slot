@@ -1,0 +1,58 @@
+import sys
+from PyQt5.QtWidgets import *
+
+app=QApplication(sys.argv)
+angka = QWidget()
+lb1 = QLabel(angka)
+alas = QLineEdit()
+alas.setStyleSheet("border : 5px ")
+tinggi= QLineEdit()
+tinggi.setStyleSheet("border : 5px ")
+
+
+def segitiga():
+    frm=QFormLayout(angka)
+    nm=QLabel()
+    nm.setText("Masukan Alas     :")
+    nm.setStyleSheet("border : 5px ")
+    frm.addRow(nm)
+    frm.addRow(alas)
+    
+    nm=QLabel()
+    nm.setText("Masukan Tinggi :")
+    nm.setStyleSheet("border : 5px ")
+    frm.addRow(nm)
+    frm.addRow(tinggi)
+
+    hasil=QPushButton()
+    hasil.setText("Hasil")
+    hasil.setStyleSheet("font-size:15px;")
+    hasil.clicked.connect(hitung)
+    frm.addRow(hasil)
+  
+    frm.addRow(lb1)
+
+    angka.setGeometry(100,100,500,300)
+    angka.setWindowTitle("PyQt5")
+    angka.setStyleSheet("font-size:15px;")
+    angka.show()
+    sys.exit(app.exec_())
+def hitung():
+    try:
+        b1=int(alas.text())
+    except ValueError:
+        lb1.setText("Inputan Alas harus berupa angka!")
+        lb1.setStyleSheet("font-size:15px")
+    else:
+        try:
+            b2=int(tinggi.text())
+        except ValueError:
+            lb1.setText("Inputan Tinggi harus berupa angka!")
+        else:
+            hasil=(b1*1/2)*b2
+            lb1.setText("Luas segitiga ="+str(hasil))
+            lb1.setStyleSheet("font-size:15px")
+
+
+if __name__ == '__main__':
+    segitiga()
